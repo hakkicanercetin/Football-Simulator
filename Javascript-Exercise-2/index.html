@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 col-md-4">
+                <img id="away-logo" src="images/tr.svg" class="img-fluid" alt=""><br>
+                <a id="home-team-name">Team A</a>
+                <a class="change-logo" onclick="myFunction5()"></a>
+                <div class="row">
+                    <div class="col-6">
+                        <button onclick="myFunction()" class="button-18 w-100">Goal</button>
+                    </div>
+                    <div class="col-6">
+                        <button onclick="myFunction3()" class="button-19 w-100">İptal</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <p class="score-text"><a class="change-logo" onclick="myFunction7()"></a><span id="home-team-score">0</span> - <span id="away-team-score">0</span><a class="change-logo" onclick="myFunction8()"></a></p>
+            </div>
+            <div class="col-12 col-md-4 away-team-div">
+                <img src="images/tr.svg" class="img-fluid" alt=""><br>
+                <a id="away-team-name">Team B</a>
+                <a class="change-logo" onclick="myFunction6()"></a>
+                <div class="row">
+                    <div class="col-6">
+                        <button onclick="myFunction2()" class="button-18 w-100">Goal</button>
+                    </div>
+                    <div class="col-6">
+                        <button onclick="myFunction4()" class="button-19 w-100">İptal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let homeScore = document.getElementById("home-team-score")
+        let awayScore = document.getElementById("away-team-score")
+        dizi = ["Pozisyon ofsayt!","Golden önce faul belirlendi!","Hakem golden önce topun dışarıdan çevrildiğini tespit etti!"];
+        const pattern = /\s/g;
+        function myFunction()
+        {
+            homeScore.innerHTML=Number(homeScore.innerHTML)+1;
+        }
+        function myFunction2()
+        {
+            awayScore.innerHTML=Number(awayScore.innerHTML)+1;
+        }
+        function myFunction3()
+        {
+            if(Number(homeScore.innerHTML)>0)
+            {
+            alert("Var'dan uyarı geldi!");
+            const randomsayi=Math.floor(Math.random()*3);
+            alert(dizi[randomsayi])
+            alert("Gol iptal edildi!")
+            homeScore.innerHTML=Number(homeScore.innerHTML)-1;
+            }
+        }
+        function myFunction4()
+        {
+            if(Number(awayScore.innerHTML)>0)
+            {
+            alert("Var'dan uyarı geldi!");
+            const randomsayi=Math.floor(Math.random()*3);
+            alert(dizi[randomsayi]);
+            alert("Gol iptal edildi!")
+            awayScore.innerHTML=Number(awayScore.innerHTML)-1;
+            }
+        }
+        function myFunction5()
+        {
+            const newHomeTeamName=prompt("Yeni Takım Adını Giriniz!");
+            if(newHomeTeamName.match(pattern) == null & newHomeTeamName != "")
+            {
+                document.getElementById("home-team-name").innerHTML = newHomeTeamName;
+            }
+            else
+            {
+                alert("Yanlış bir değer girdiniz!")
+            }
+        }
+        function myFunction6()
+        {
+            const newAwayTeamName=prompt("Yeni Takım Adını Giriniz!");
+            if(newAwayTeamName.match(pattern) == null & newAwayTeamName != "")
+            {
+                document.getElementById("away-team-name").innerHTML = newAwayTeamName;
+            }
+            else
+            {
+                alert("Yanlış bir değer girdiniz!")
+            }
+        }
+        function myFunction7()
+        {
+            let newHomeTeamScore = prompt("Yeni takım skorunu giriniz!(0-100)");
+            newHomeTeamScore = Number(newHomeTeamScore);
+            if(newHomeTeamScore>=0 & newHomeTeamScore<=100)
+            {
+                document.getElementById("home-team-score").innerHTML = newHomeTeamScore;
+            }
+            else
+            {
+                alert("Yanlış bir değer girdiniz!")
+            }
+        }
+        function myFunction8()
+        {
+            let newAwayTeamScore = prompt("Yeni takım skorunu giriniz!(0-100)");
+            newAwayTeamScore = Number(newAwayTeamScore);
+            if(newAwayTeamScore>=0 & newAwayTeamScore<=100)
+            {
+                document.getElementById("away-team-score").innerHTML = newAwayTeamScore;
+            }
+            else
+            {
+                alert("Yanlış bir değer girdiniz!")
+            }
+        }
+    </script>
+</body>
+</html>
